@@ -1,16 +1,17 @@
 from pyspark.sql import SparkSession
 
-# Create SparkSession
+# Initialize Spark session
 spark = SparkSession.builder \
-    .appName("SparkSessionExample") \
+    .appName("ExampleApp") \
     .getOrCreate()
 
-# Sample DataFrame
-data = [("Alice", 25), ("Bob", 30)]
-df = spark.createDataFrame(data, ["Name", "Age"])
+# Set log level
+spark.sparkContext.setLogLevel("DEBUG")
 
-# Show DataFrame
+# Example DataFrame operation
+data = [("Alice", 1), ("Bob", 2)]
+df = spark.createDataFrame(data, ["Name", "Age"])
 df.show()
 
-# Stop SparkSession
+# Stop Spark session
 spark.stop()
